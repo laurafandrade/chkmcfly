@@ -1,31 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>McFly System IBAMA Check</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>McFly System | IBAMA Check</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #00ffea;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #00ffea;
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: #1e1e1e;
+            color: #00ffea;
+            border: 1px solid #00ffea;
+            padding: 10px;
+        }
+        button {
+            background-color: #00ffea;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .resultado {
+            background-color: #1e1e1e;
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #00ffea;
+        }
+        .info {
+            background-color: #1e1e1e;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00ffea;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 McFly System IBAMA Check</h1>
-        <p>✔️ Verificador de credenciais do sistema CTF IBAMA.</p>
-        <p>⚖️ <b>Uso exclusivo para fins éticos, internos e legais.</b><br>Este sistema foi desenvolvido para validar logins corporativos de forma autorizada.</p>
-        <form method="POST">
-            <textarea name="combos" rows="10" placeholder="Digite no formato CPF:CNPJ:SENHA, um por linha. Ex: 12345678900:senha123"></textarea>
-            <br>
-            <button type="submit">Verificar</button>
-        </form>
+    <h1>McFly System - IBAMA Checker</h1>
 
-        {% if resultado %}
-            <div class="result">
-                <h2>Resultado:</h2>
-                <ul>
-                    {% for item in resultado %}
-                        <li>{{ item }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+    <div class="info">
+        <p>🛈 Este sistema destina-se exclusivamente a validações internas autorizadas de credenciais do IBAMA no sistema CTF.</p>
+        <p>⚖️ Uso permitido apenas para fins legais, como auditorias, conformidade ou manutenção dos próprios acessos, conforme a LGPD e a legislação vigente.</p>
     </div>
+
+    <form method="post">
+        <label>Insira os combos no formato <strong>cpf:senha</strong> (um por linha):</label><br>
+        <textarea name="combos" required></textarea><br>
+        <button type="submit">Verificar</button>
+    </form>
+
+    {% if resultado %}
+        <div class="resultado">
+            <h3>Resultado:</h3>
+            {% for r in resultado %}
+                <p>{{ r }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
 </body>
 </html>
