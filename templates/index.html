@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McFly System IBAMA Check</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ McFly System IBAMA Check</h1>
+        <p class="description">
+            Esta ferramenta permite validar credenciais do sistema CTF/IBAMA de forma ética e legal, exclusivamente para uso interno de profissionais de tecnologia, auditoria ou empresas.<br><br>
+            <strong>⚖️ Aviso Legal:</strong> O uso desta ferramenta é restrito a finalidades legais, auditorias internas e testes autorizados. O uso indevido, sem autorização do proprietário dos dados, pode configurar crime conforme a <strong>Lei nº 12.965/2014 (Marco Civil da Internet)</strong> e <strong>Lei Geral de Proteção de Dados (LGPD) nº 13.709/2018</strong>.
+        </p>
+
+        <form method="POST">
+            <textarea name="combos" placeholder="CPF:senha (um por linha)"></textarea><br>
+            <button type="submit">🔍 Verificar</button>
+        </form>
+
+        {% if resultados %}
+        <div class="results">
+            <h2>🔎 Resultados:</h2>
+            {% for r in resultados %}
+                <p>{{r}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
